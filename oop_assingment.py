@@ -15,25 +15,33 @@ urun fiyati hesaplarken once kar sonra otv ve kdv sirayla alis fiyatina eklenmel
 
 hazırlayan @aucan
 
-Öğrenci Ad Soyad=
-Öğrenci No=
-Bölüm=
-Sınıf=
+Öğrenci Ad Soyad= Ebru Özkan
+Öğrenci No=2018507020
+Bölüm= YBS
+Sınıf=4
 '''
 
 class urunler:
-    #kodunuzu bu yorum satırını silerek buraya yazınız, diğer kısımları değiştirmeyiniz.
-   
+ urun_adi=""
+ urun_alis_fiyati=0
+ urun_otv_orani=0
+ urun_kdv_orani=0
+  
+   def __init__ (self,aurun_adi,aurun_alis_fiyati,aurun_otv_orani,aurun_kdv_orani):
+        self.urunadi=aurun_adi
+        self.urun_alis_fiyati=aurun_alis_fiyati
+        self.urun_otv_orani=aurun_otv_orani
+        self.urun_kdv_orani=aurun_kdv_orani
+       
+   def urun_satis_fiyati(self,kar_orani):
+        self.urun_alis_fiyati= self.urun_alis_fiyati + (self.urun_alis_fiyati*kar_orani)
+        self.urun_alis_fiyati= self.urun_alis_fiyati + (self.urun_alis_fiyati*self.urun_otv_orani)
+        self.urun_alis_fiyati= self.urun_alis_fiyati + (self.urun_alis_fiyati*self.urun_kdv_orani)
+        return self.urun_kdv_orani
         
     
 def sepet_fiyati(kar_orani):
-    '''
-    Fonksiyon urunlerin toplam fiyatini geri dönüş değeri olarak dondurmelidir. (5 puan)
-    Sadece #------**------ işareti ile belirtilen 
-    kısımlar arasını değiştiriniz. 
-
-    toplam değişkenini doldurmanız beklenmektedir.
-    '''
+ 
     ekmek=urunler('ekmek',1,0.20,0.12)
     patates=urunler('patates',2,0.16,0.18)
     elma=urunler('elma',3,0.11,0.22)
@@ -41,7 +49,11 @@ def sepet_fiyati(kar_orani):
     yumurta=urunler('yumurta',5,0.30,0.19)
     toplam=0   
     #-------**-----------
-    #kodunuzu bu yorum satırını silerek buraya yazınız, diğer kısımları değiştirmeyiniz.
+    toplam= ekmek.urun_satis_fiyati(kar_oarni)+
+    patates.urun_satis_fiyati(kar_orani)+
+    elma.urun_satis_fiyati+
+    un.urun_satis_fiyati+
+    yumurta.urun_satis_fiyati
     #-------**-----------
     return toplam
 
